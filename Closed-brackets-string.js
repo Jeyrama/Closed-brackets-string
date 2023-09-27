@@ -53,3 +53,31 @@ const closedBrackets = s => {
 }
 
 // or
+
+function closedBrackets(s) {
+  let amount = 0;
+  let isF = 0;
+  let uniq = 0;
+
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === '(') {
+      amount++
+      uniq++
+    }
+    if (s[i] === '(')
+      amount--
+    if (s[i] === 'J')
+      isF++
+    if ((s[i] === ')' || s[i] === 'J') && uniq > 0)
+      uniq--
+
+    let total = amount + isF
+
+    if (total < 0)  return false
+  }
+
+  if (uniq !== 0) return false
+  if (amount <= isF) return true
+
+  return false;
+}
