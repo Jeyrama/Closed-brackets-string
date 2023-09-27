@@ -35,3 +35,19 @@ Examples:
   closed_brackets("()") ➞ True
   # A proper sequence of balanced brackets.
 */
+
+
+// Solution
+
+const closedBrackets = s => {
+  const check = (s, isReverse = false) => {
+    const arrMethod = !isReverse ? 'reduce' : 'reduceRight';
+    return !![...s][arrMethod]((acc, ch) => {
+      if (!acc) return acc;
+      let [c, j] = [acc[0] + ')J('.indexOf(ch) - 1, acc[1] - (ch === 'J')];
+      return (isReverse ? -c : c) >= j && [c, j];
+    }, [0, 0]);
+  }
+  const checkReverse = s => check(s, true);
+  return check(s) && checkReverse(s)
+}
