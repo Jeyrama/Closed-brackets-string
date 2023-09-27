@@ -51,3 +51,5 @@ const closedBrackets = s => {
   const checkReverse = s => check(s, true);
   return check(s) && checkReverse(s)
 }
+
+// or
